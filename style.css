@@ -83,7 +83,7 @@ body {
   height: 100%;
   position: absolute;
   transition: var(--shortTime);
-  transition-property: backdrop-filter opacity;
+  transition-property: all;
   transition-timing-function: var(--animationFunction);
 }
 @keyframes blackingOutBg {
@@ -230,7 +230,7 @@ body {
   margin-left: 0.5em;
   filter: opacity(0.7);
   transition: var(--animationFunction) 0.2s;
-  transition-property: filter transform;
+  transition-property: all;
   white-space: nowrap;
 }
 .site:hover .site-icon {
