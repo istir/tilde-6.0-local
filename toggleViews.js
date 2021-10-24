@@ -9,6 +9,11 @@ function toggleView() {
   smallContainer.classList.toggle("hidden");
   blurE.classList.toggle("visible");
   blurE.classList.toggle("hidden");
+  if (blurE.style.backdropFilter === "blur(10px) brightness(0.9)") {
+    blurE.style.backdropFilter = "blur(0px) brightness(1)";
+  } else {
+    blurE.style.backdropFilter = "blur(10px) brightness(0.9)";
+  }
 }
 
 clocks.forEach((clock) => {
