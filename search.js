@@ -1,11 +1,11 @@
 const inputOverlay = document.querySelector(".search.overlay");
-
-function changeTextColor(isEmpty) {
+const inputSmall = document.querySelector(".search.small");
+function changeTextColor(element, isEmpty) {
   if (isEmpty) {
-    inputOverlay.style.color = "transparent";
+    element.style.color = "transparent";
     return;
   }
-  inputOverlay.style.color = "#fff";
+  element.style.color = "#fff";
 }
 function normalizeInput(text) {
   return text.replace(/#/g, "");
@@ -24,24 +24,38 @@ function checkIfTypedBookmarkKey(text) {
     }
   }
 }
-changeTextColor(inputOverlay?.value.length < 1);
-inputOverlay.addEventListener("input", () => {
-  if (inputOverlay?.value.length < 1) return changeTextColor(true);
-  changeTextColor();
-});
-inputOverlay.addEventListener("keypress", (e) => {
-  const value = normalizeInput(inputOverlay?.value);
-  if (e.key === "Enter") {
-    if (checkIfUrl(value)) {
-      window.location = value;
-      return;
-    }
 
-    if (checkIfTypedBookmarkKey(inputOverlay?.value)) {
-      window.location = checkIfTypedBookmarkKey(inputOverlay?.value);
-      return;
-    }
-
-    window.location = `${getConfig("searchEngine")}${value}`;
+function ensureParity(currentElement) {
+  if (currentElement.classList.contains("small")) {
+    inputOverlay.value = currentElement.value;
+    return;
   }
-});
+  inputSmall.value = currentElement.value;
+}
+
+function handleSearchingOnElement(element) {
+  changeTextColor(element, element?.value.length < 1);
+  element.addEventListener("input", () => {
+    ensureParity(element);
+    if (element?.value.length < 1) return changeTextColor(true);
+    changeTextColor(element);
+  });
+  element.addEventListener("keypress", (e) => {
+    const value = normalizeInput(element?.value);
+    if (e.key === "Enter") {
+      if (checkIfUrl(value)) {
+        window.location = value;
+        return;
+      }
+
+      if (checkIfTypedBookmarkKey(element?.value)) {
+        window.location = checkIfTypedBookmarkKey(element?.value);
+        return;
+      }
+
+      window.location = `${getConfig("searchEngine")}${value}`;
+    }
+  });
+}
+handleSearchingOnElement(inputOverlay);
+handleSearchingOnElement(inputSmall);

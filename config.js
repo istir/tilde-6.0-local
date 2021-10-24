@@ -2,6 +2,7 @@ const defaultConfig = {
   searchEngine: "https://duckduckgo.com/?q=",
   background:
     "https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D",
+  blackout: 20000,
   bookmarks: [
     [
       {

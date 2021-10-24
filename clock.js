@@ -2,6 +2,8 @@ const hours = document.querySelectorAll(".hours");
 const minutes = document.querySelectorAll(".minutes");
 
 document.addEventListener("DOMContentLoaded", () => {
+  inputOverlay.value = "";
+  inputSmall.value = "";
   replaceTime(
     padZeroes(new Date().getHours()),
     padZeroes(new Date().getMinutes())

@@ -9,8 +9,10 @@
     <script src="./config.js" defer></script>
     <script src="./bookmarks.js" defer></script>
     <script src="./toggleViews.js" defer></script>
+    <script src="./blackout.js" defer></script>
     <link href="./icons/css/all.min.css" rel="stylesheet" />
-    <title>Document</title>
+    <link rel="shortcut icon" type="image/png" href="./favicon-light.ico" />
+    <title>~</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +24,7 @@
   <body>
     <div id="wrapper">
       <div id="background"></div>
-      <div id="background-blur"></div>
+      <div id="background-blur" class="visible"></div>
       <!-- <div id="flexbox"> -->
       <div id="sites-container" class="visible">
         <div id="sites"></div>
@@ -44,7 +46,7 @@
           </div>
         </div>
         <div class="search-wrapper small">
-          <input type="text" name="search" class="search" />
+          <input type="text" name="search" class="search small" />
         </div>
         <div id="frequentBookmarks"></div>
       </div>
