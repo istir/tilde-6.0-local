@@ -2,10 +2,18 @@ const inputOverlay = document.querySelector(".search.overlay");
 const inputSmall = document.querySelector(".search.small");
 function changeTextColor(element, isEmpty) {
   if (isEmpty) {
-    element.style.color = "transparent";
+    document.querySelectorAll(".weather").forEach((weather) => {
+      weather.classList.remove("hidden");
+      weather.classList.add("visible");
+    });
+    element.style && (element.style.color = "transparent");
     return;
   }
-  element.style.color = "#fff";
+  document.querySelectorAll(".weather").forEach((weather) => {
+    weather.classList.remove("visible");
+    weather.classList.add("hidden");
+  });
+  element.style && (element.style.color = "#fff");
 }
 function normalizeInput(text) {
   return text.replace(/#/g, "");
@@ -37,7 +45,7 @@ function handleSearchingOnElement(element) {
   changeTextColor(element, element?.value.length < 1);
   element.addEventListener("input", () => {
     ensureParity(element);
-    if (element?.value.length < 1) return changeTextColor(true);
+    if (element?.value.length < 1) return changeTextColor(element, true);
     changeTextColor(element);
   });
   element.addEventListener("keypress", (e) => {
