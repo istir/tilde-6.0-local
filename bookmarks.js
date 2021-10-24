@@ -39,8 +39,8 @@ function insertFrequentBookmark(bookmark) {
   return frequentBookmark;
 }
 
-const bookmarks = getConfig("bookmarks");
-const frequentBookmarks = getConfig("frequentBookmarks");
+const bookmarks = getConfig("bookmarksLocal");
+const frequentBookmarks = getConfig("frequentBookmarksLocal");
 for (const key in bookmarks) {
   sites.appendChild(insertSiteGroup(bookmarks[key]));
 }

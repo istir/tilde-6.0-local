@@ -4,7 +4,7 @@ const defaultConfig = {
     "https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D",
   blackout: 20000,
   weatherAPIKey: "",
-  bookmarks: [
+  bookmarksLocal: [
     [
       {
         key: "g",
@@ -40,7 +40,7 @@ const defaultConfig = {
       { key: "r", name: "Earl", url: "https://www.twitch.tv/ratirl" },
     ],
   ],
-  frequentBookmarks: [
+  frequentBookmarksLocal: [
     { name: "Twitter", icon: "fab fa-twitter", url: "https://twitter.com/" },
     {
       name: "YouTube",
