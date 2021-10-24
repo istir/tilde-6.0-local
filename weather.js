@@ -37,7 +37,7 @@ function weatherLocation() {
   }
 
   navigator.geolocation.getCurrentPosition(
-    async (ful) => {
+    (ful) => {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${ful.coords.latitude}&lon=${ful.coords.longitude}&appid=${apiKey}&units=metric`,
         {

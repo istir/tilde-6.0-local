@@ -4,6 +4,11 @@ const minutes = document.querySelectorAll(".minutes");
 document.addEventListener("DOMContentLoaded", () => {
   inputOverlay.value = "";
   inputSmall.value = "";
+  document.querySelector(
+    "#background"
+  ).style.backgroundImage = `url(${getConfig("background")})`;
+  document.querySelector(".search.overlay").focus();
+
   replaceTime(
     padZeroes(new Date().getHours()),
     padZeroes(new Date().getMinutes())
