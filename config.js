@@ -38,6 +38,15 @@ const defaultConfig = {
       { key: "r", name: "Earl", url: "https://www.twitch.tv/ratirl" },
     ],
   ],
+  frequentBookmarks: [
+    { name: "Twitter", icon: "fab fa-twitter", url: "https://twitter.com/" },
+    {
+      name: "YouTube",
+      icon: "fab fa-youtube",
+      url: "https://youtube.com/feed/subscriptions",
+    },
+    { name: "Reddit", icon: "fab fa-reddit", url: "https://www.reddit.com/" },
+  ],
 };
 
 function initialize() {

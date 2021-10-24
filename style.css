@@ -2,6 +2,10 @@
   --whiteAlpha20: rgba(255, 255, 255, 0.05);
   --whiteAlpha10: rgba(255, 255, 255, 0.1);
   --whiteAlpha15: rgba(255, 255, 255, 0.15);
+  --minScale: 0.7;
+  --longTime: 0.4s;
+  --shortTime: 0.25s;
+  --animationFunction: ease-in-out;
 }
 
 @font-face {
@@ -31,6 +35,18 @@
   font-weight: 700;
   font-style: normal;
 }
+
+@keyframes fadeScale {
+  0% {
+    opacity: 0;
+    transform: scale(var(--minScale));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -56,9 +72,9 @@ body {
   position: fixed;
   background-size: cover;
   background-position: 50%;
-  transition: -webkit-filter 0.3s;
-  transition: filter 0.3s;
-  transition: filter 0.3s, -webkit-filter 0.3s;
+  transition: -webkit-filter var(--shortTime);
+  transition: filter var(--shortTime);
+  transition: filter var(--shortTime), -webkit-filter var(--shortTime);
   width: 100%;
   height: 100%;
 }
@@ -67,7 +83,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  transition: 0.3s;
+  transition: var(--shortTime);
   transition-property: backdrop-filter;
 }
 #sites-container {
@@ -77,7 +93,7 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 8px;
-
+  transition: var(--animationFunction) all var(--shortTime);
   display: grid;
   grid-template-columns: 1fr min-content;
   grid-template-rows: 1fr min-content;
@@ -85,6 +101,53 @@ body {
   grid-template-areas:
     "sites sites"
     "search clock";
+}
+#sites-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  animation-name: fadeScale;
+  animation-iteration-count: 1;
+  animation-timing-function: var(--animationFunction);
+  animation-duration: var(--longTime);
+  animation-direction: reverse;
+  transform: scale(var(--minScale));
+}
+#sites-container.visible {
+  opacity: 1;
+  visibility: visible;
+  animation-name: fadeScale;
+  animation-iteration-count: 1;
+  animation-timing-function: var(--animationFunction);
+  animation-duration: var(--longTime);
+  transform: scale(1);
+}
+
+#small-container {
+  transition: var(--animationFunction) all var(--shortTime);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#small-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  animation-name: fadeScale;
+  animation-iteration-count: 1;
+  animation-timing-function: var(--animationFunction);
+  animation-duration: 0.2s;
+  animation-direction: reverse;
+  transform: scale(var(--minScale));
+}
+#small-container.visible {
+  opacity: 1;
+  visibility: visible;
+  animation-name: fadeScale;
+  animation-iteration-count: 1;
+  animation-timing-function: var(--animationFunction);
+  animation-duration: 0.2s;
+  transform: scale(1);
 }
 #sites {
   display: grid;
@@ -131,13 +194,13 @@ body {
   margin-bottom: 2px;
   /* margin-right: 2px; */
   border-radius: 999px;
-  transition: ease-in-out 0.2s;
+  transition: var(--animationFunction) 0.2s;
   transition-property: background-color;
 }
 .site-name {
   margin-left: 0.5em;
   filter: opacity(0.7);
-  transition: ease-in-out 0.2s;
+  transition: var(--animationFunction) 0.2s;
   transition-property: filter transform;
 }
 .site:hover .site-icon {
@@ -160,15 +223,27 @@ body {
   margin: 5px;
   /* font-weight: bold; */
 }
-
+.clock.small {
+  font-size: clamp(4rem, 11.5vw, 6rem);
+  text-shadow: rgba(0, 0, 0, 0.6) 0px 1px 4px;
+}
 .clock-wrapper.overlay {
   display: flex;
   justify-content: right;
   align-items: flex-end;
   grid-area: clock;
 }
-.search-wrapper.overlay {
+.clock-wrapper.small {
+  margin-bottom: 20px;
+}
+.search-wrapper {
   display: flex;
+}
+.search-wrapper.small {
+  justify-content: center;
+  /* align-items: flex-end; */
+}
+.search-wrapper.overlay {
   justify-content: left;
   align-items: flex-end;
   grid-area: search;
@@ -188,10 +263,40 @@ body {
   border-radius: 10px;
   font-size: 19px;
   z-index: 3;
-  width: 300px;
   height: 30px;
-  transition: 0.5s;
+  transition: var(--longTime);
   box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 4px;
   background-color: rgb(56, 62, 66);
-  /* color: ; */
+}
+.search {
+  width: 300px;
+}
+.search.overlay {
+  width: 100px;
+}
+.search.overlay:hover {
+  width: 200px;
+}
+.search.overlay:focus {
+  width: 300px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             FREQUENT BOOKMARKS                             */
+/* -------------------------------------------------------------------------- */
+
+#frequentBookmarks {
+  display: flex;
+  /* flex-direction: column; */
+  place-items: center;
+  gap: 20px;
+  margin-top: 2em;
+}
+
+.frequentBookmarkIcon {
+  font-size: 3.2em;
+  color: rgb(250, 250, 250);
+  filter: drop-shadow(rgba(0, 0, 0, 0.6) 0px 1px 4px);
+  /* margin-left: 10px;
+  margin-right: 10px; */
 }

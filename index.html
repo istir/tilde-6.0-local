@@ -8,6 +8,8 @@
     <script src="./search.js" defer></script>
     <script src="./config.js" defer></script>
     <script src="./bookmarks.js" defer></script>
+    <script src="./toggleViews.js" defer></script>
+    <link href="./icons/css/all.min.css" rel="stylesheet" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +24,7 @@
       <div id="background"></div>
       <div id="background-blur"></div>
       <!-- <div id="flexbox"> -->
-      <div id="sites-container">
+      <div id="sites-container" class="visible">
         <div id="sites"></div>
         <div class="clock-wrapper overlay">
           <div class="clock overlay">
@@ -34,26 +36,19 @@
           <input type="text" name="search" class="search overlay" />
         </div>
       </div>
+      <div id="small-container" class="hidden">
+        <div class="clock-wrapper small">
+          <div class="clock small">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+          </div>
+        </div>
+        <div class="search-wrapper small">
+          <input type="text" name="search" class="search" />
+        </div>
+        <div id="frequentBookmarks"></div>
+      </div>
     </div>
     <!-- </div> -->
   </body>
-
-  <script>
-    // const items = [
-    //   { url: "www.google.com", keyName: "g", name: "Google" },
-    //   { url: "www.google.com", keyName: "t", name: "Test" },
-    // ];
-    // // document.getElementById("sites").innerHTML="<div>TEST</div>"
-
-    // function renderListItem(id, listItem) {
-    //   /*html*/
-    //   document.getElementById(
-    //     id
-    //   ).innerHTML += `<ul><li className='command'><a href=${listItem.url}><span className="commandKey">${listItem.keyName}</span><span>${listItem.name}</span></a></li></ul>`;
-    // }
-
-    // items.forEach((element) => {
-    //   renderListItem("sites", element);
-    // });
-  </script>
 </html>

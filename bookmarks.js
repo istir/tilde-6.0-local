@@ -1,5 +1,5 @@
 const sites = document.querySelector("#sites");
-
+const frequentBookmarksElement = document.querySelector("#frequentBookmarks");
 function insertSiteGroup(groupArray) {
   function insertSite(site) {
     const siteElement = document.createElement("a");
@@ -25,7 +25,27 @@ function insertSiteGroup(groupArray) {
   //   group.appendChild(insertSite(site));
 }
 
+function insertFrequentBookmark(bookmark) {
+  function insertIcon(iconName) {
+    const icon = document.createElement("i");
+    icon.className = iconName;
+    return icon;
+  }
+  // console.log(bookmark);
+  const frequentBookmark = document.createElement("a");
+  frequentBookmark.className = "frequentBookmarkIcon";
+  frequentBookmark.href = bookmark.url;
+  frequentBookmark.appendChild(insertIcon(bookmark.icon));
+  return frequentBookmark;
+}
+
 const bookmarks = getConfig("bookmarks");
+const frequentBookmarks = getConfig("frequentBookmarks");
 for (const key in bookmarks) {
   sites.appendChild(insertSiteGroup(bookmarks[key]));
+}
+for (const key in frequentBookmarks) {
+  frequentBookmarksElement.appendChild(
+    insertFrequentBookmark(frequentBookmarks[key])
+  );
 }
