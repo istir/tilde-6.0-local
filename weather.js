@@ -64,3 +64,6 @@ function weatherLocation() {
   );
 }
 weatherLocation();
+setInterval(() => {
+  weatherLocation();
+}, 900000); //15 mins
