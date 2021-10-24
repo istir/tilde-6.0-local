@@ -15,3 +15,7 @@ clocks.forEach((clock) => {
   //   console.log(e);
   clock.addEventListener("click", toggleView);
 });
+document.querySelector("#background-blur").addEventListener("click", () => {
+  if (smallContainer.classList.contains("visible")) return;
+  toggleView();
+});
