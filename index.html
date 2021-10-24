@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./clock.js" defer></script>
+    <script src="./search.js" defer></script>
+    <script src="./config.js" defer></script>
+    <script src="./bookmarks.js" defer></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="background"></div>
+      <div id="background-blur"></div>
+      <!-- <div id="flexbox"> -->
+      <div id="sites-container">
+        <div id="sites"></div>
+        <div class="clock-wrapper overlay">
+          <div class="clock overlay">
+            <div class="hours"></div>
+            <div class="minutes"></div>
+          </div>
+        </div>
+        <div class="search-wrapper overlay">
+          <input type="text" name="search" class="search overlay" />
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </body>
+
+  <script>
+    // const items = [
+    //   { url: "www.google.com", keyName: "g", name: "Google" },
+    //   { url: "www.google.com", keyName: "t", name: "Test" },
+    // ];
+    // // document.getElementById("sites").innerHTML="<div>TEST</div>"
+
+    // function renderListItem(id, listItem) {
+    //   /*html*/
+    //   document.getElementById(
+    //     id
+    //   ).innerHTML += `<ul><li className='command'><a href=${listItem.url}><span className="commandKey">${listItem.keyName}</span><span>${listItem.name}</span></a></li></ul>`;
+    // }
+
+    // items.forEach((element) => {
+    //   renderListItem("sites", element);
+    // });
+  </script>
+</html>
