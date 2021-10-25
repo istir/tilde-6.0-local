@@ -392,6 +392,7 @@ body {
   transition: 0.15s ease-in-out;
   z-index: 10;
   border-radius: var(--border-radius-sm);
+  overflow-y: scroll;
 }
 
 .settings-field {
@@ -421,4 +422,25 @@ body {
 
 #settings-save {
   font-size: 1.2em;
+}
+
+#settings-wrapper {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+}
+
+#settings-bookmarks-wrapper {
+  display: grid;
+  gap: 5px;
+}
+#settings-bookmarks-grid,
+#settings-bookmarks-grid-frequent {
+  display: grid;
+  gap: 5px;
+}
+.settings-bookmark-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }

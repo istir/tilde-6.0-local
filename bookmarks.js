@@ -38,14 +38,18 @@ function insertFrequentBookmark(bookmark) {
   frequentBookmark.appendChild(insertIcon(bookmark.icon));
   return frequentBookmark;
 }
-
-const bookmarks = getConfig("bookmarksLocal");
-const frequentBookmarks = getConfig("frequentBookmarksLocal");
-for (const key in bookmarks) {
-  sites.appendChild(insertSiteGroup(bookmarks[key]));
+function initializeBookmarks() {
+  sites.innerHTML = "";
+  frequentBookmarksElement.innerHTML = "";
+  const bookmarks = getConfig("bookmarksLocal");
+  const frequentBookmarks = getConfig("frequentBookmarksLocal");
+  for (const key in bookmarks) {
+    sites.appendChild(insertSiteGroup(bookmarks[key]));
+  }
+  for (const key in frequentBookmarks) {
+    frequentBookmarksElement.appendChild(
+      insertFrequentBookmark(frequentBookmarks[key])
+    );
+  }
 }
-for (const key in frequentBookmarks) {
-  frequentBookmarksElement.appendChild(
-    insertFrequentBookmark(frequentBookmarks[key])
-  );
-}
+initializeBookmarks();
