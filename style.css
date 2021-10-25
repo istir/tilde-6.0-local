@@ -2,39 +2,24 @@
   --whiteAlpha20: rgba(255, 255, 255, 0.05);
   --whiteAlpha10: rgba(255, 255, 255, 0.1);
   --whiteAlpha15: rgba(255, 255, 255, 0.15);
+  --darkAlpha: rgba(56, 62, 66, 0.55);
   --minScale: 0.7;
   --longTime: 0.4s;
   --shortTime: 0.25s;
   --animationFunction: ease-in-out;
-}
-/* 
-@font-face {
-  font-family: "Product Sans";
-  src: url("./fonts/GoogleSans-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  --primary-color: #fff;
+  --secondary-color: #000;
+  --border-radius-sm: 0.375rem;
 }
 
-@font-face {
-  font-family: "Product Sans";
-  src: url("./fonts/GoogleSans-Italic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: italic;
+.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
-
-@font-face {
-  font-family: "Product Sans";
-  src: url("./fonts/GoogleSans-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
+.visible {
+  opacity: 1;
+  visibility: visible;
 }
-
-@font-face {
-  font-family: "Product Sans";
-  src: url("./fonts/GoogleSans-Medium.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-} */
 
 @keyframes fadeScale {
   0% {
@@ -103,15 +88,9 @@ body {
   -webkit-animation-fill-mode: forwards;
   animation-duration: 3600s;
 }
-#background-blur.visible {
-  opacity: 1;
-}
-#background-blur.hidden {
-  opacity: 0;
-}
 #sites-container {
   z-index: 1;
-  background-color: rgba(56, 62, 66, 0.55);
+  background-color: var(--darkAlpha);
   /* padding: 1em; */
   backdrop-filter: blur(20px);
   border-radius: 10px;
@@ -355,11 +334,91 @@ body {
 .weather > div {
   font-size: 110%;
 }
-.weather.hidden {
-  opacity: 0;
-  visibility: hidden;
+
+/* -------------------------------------------------------------------------- */
+/*                                  SETTINGS                                  */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- settings button ---------------------------- */
+.shadow {
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
-.weather.visible {
-  opacity: 1;
-  visibility: visible;
+.button {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+}
+.button-sm {
+  width: 2em;
+  height: 2em;
+}
+
+.solid-button {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+.rounded-button {
+  border-radius: 999px;
+
+  transition: 0.15s ease-in-out;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+#settings-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 12;
+}
+/* ------------------------------ settings pane ----------------------------- */
+
+#settings {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--darkAlpha);
+  backdrop-filter: blur(25px);
+  margin: 10px;
+  transition: 0.15s ease-in-out;
+  z-index: 10;
+  border-radius: var(--border-radius-sm);
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+  /* width: clamp(min-content, 40vw, 100%); */
+  margin: 15px;
+}
+.settings-field-name {
+  color: var(--primary-color);
+}
+.settings-field-value {
+  border-radius: var(--border-radius-sm);
+  border: 2px solid transparent;
+  padding: 5px;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  outline: none;
+  transition: 0.15s ease-in-out;
+}
+.settings-field-value:focus {
+  border-color: var(--secondary-color);
+}
+
+#settings-save {
+  font-size: 1.2em;
 }

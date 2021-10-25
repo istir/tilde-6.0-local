@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/js/all.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.css"
+      rel="stylesheet"
+      media="all"
+    />
 
     <script src="./clock.js" defer></script>
     <script src="./search.js" defer></script>
@@ -13,6 +17,7 @@
     <script src="./toggleViews.js" defer></script>
     <script src="./blackout.js" defer></script>
     <script src="./weather.js" defer></script>
+    <script src="./settings.js" defer></script>
     <!-- <link href="./icons/css/all.min.css" rel="stylesheet" /> -->
     <link rel="shortcut icon" type="image/png" href="./favicon-light.ico" />
     <title>~</title>
@@ -30,7 +35,13 @@
     /> -->
   </head>
   <body>
-    <div id="wrapper">
+    <div id="wrapper" class="visible">
+      <button
+        id="settings-button"
+        class="button solid-button rounded-button shadow button-sm"
+      >
+        <i class="fas fa-cog"></i>
+      </button>
       <div id="background"></div>
       <div
         id="background-blur"
@@ -70,6 +81,14 @@
         </div>
         <div id="frequentBookmarks"></div>
       </div>
+    </div>
+    <div id="settings" class="visible shadow">
+      <button
+        id="settings-save"
+        class="button solid-button rounded-button shadow"
+      >
+        <i class="fas fa-save"></i>
+      </button>
     </div>
   </body>
 </html>
