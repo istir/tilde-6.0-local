@@ -7,7 +7,7 @@
   --shortTime: 0.25s;
   --animationFunction: ease-in-out;
 }
-
+/* 
 @font-face {
   font-family: "Product Sans";
   src: url("./fonts/GoogleSans-Regular.ttf") format("truetype");
@@ -34,7 +34,7 @@
   src: url("./fonts/GoogleSans-Medium.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-}
+} */
 
 @keyframes fadeScale {
   0% {
@@ -53,7 +53,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  font-family: "Product Sans", sans-serif;
+  font-family: "Google Sans", sans-serif;
   user-select: none;
 }
 #wrapper {
